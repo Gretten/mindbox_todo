@@ -1,4 +1,19 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: Lato, "Segoe UI", "Helvetica Neue", sans-serif;
+  font-size: 18px;
+  color: #333;
+}
+
+body {
+  margin: 0;
+}
+
 .app {
-    background-color: #fff;
-    padding: 15px;
+  background-color: #fff;
 }
