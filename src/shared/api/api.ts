@@ -2,7 +2,7 @@ import { todoData } from './state';
 import { TodoDTO } from './types';
 
 export type TodosAdapter = {
-    getTodos: () => Promise<TodoDTO[]>;
+    getTodos: () => Promise<TodoDTO[] | null>;
     getTodo: (id: string) => Promise<TodoDTO | null>;
     deleteTodo: (id: string) => Promise<TodoDTO[]>;
     addTodo: (newTodo: TodoDTO) => Promise<TodoDTO>;
@@ -11,7 +11,7 @@ export type TodosAdapter = {
 
 export const todosAdapter: TodosAdapter = {
     getTodos: async () => {
-        return todoData;
+        return todoData || null;
     },
     getTodo: async (id) => {
         return todoData.find(todo => todo.id === id) || null;
