@@ -1,0 +1,9 @@
+.app-container {
+  min-width: 450px;
+}
+
+@media screen and (max-width: 450px) {
+  .app-container {
+    min-width: 350px;
+  }
+}

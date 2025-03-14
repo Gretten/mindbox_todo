@@ -12,7 +12,7 @@ export const useTodoAppStore = () => {
   }, []);
 
   const addTodo = (todo: Todo) => {
-    setTodos((prev) => [...prev, todo]);
+    setTodos((prev) => [todo, ...prev]);
   };
 
   const deleteTodo = (id: string) => {
