@@ -2,6 +2,24 @@
   min-width: 450px;
 }
 
+.control-panel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.control-panel-filter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.items-left {
+  color: gray;
+  font-size: 14px;
+}
+
 @media screen and (max-width: 450px) {
   .app-container {
     min-width: 350px;
