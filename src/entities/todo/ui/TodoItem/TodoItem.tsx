@@ -1,7 +1,8 @@
 import Checkbox from "@mui/material/Checkbox/Checkbox";
 import { Todo } from "../../model/model";
 import styles from "./style.module.css";
-
+import IconButton from "@mui/material/IconButton/IconButton";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 interface TodoItemProps {
   todo: Todo;
   onDelete: (id: string) => void;
@@ -31,7 +32,13 @@ export const TodoItem = ({ todo, onDelete, onUpdate }: TodoItemProps) => {
         />
         <h3 style={titleStyle}>{title}</h3>
       </div>
-      <button onClick={() => onDelete(id)}>Delete</button>
+      <IconButton
+        color="warning"
+        aria-label="delete todo"
+        onClick={() => onDelete(id)}
+      >
+        <DeleteOutlineIcon />
+      </IconButton>
     </div>
   );
 };
