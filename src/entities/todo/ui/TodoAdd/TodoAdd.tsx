@@ -2,7 +2,7 @@ import TextField from "@mui/material/TextField/TextField";
 import { Todo } from "../..";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import IconButton from "@mui/material/IconButton/IconButton";
-import { useState } from "react";
+import { FC, useState } from "react";
 import { createTodo } from "../../lib/createTodo";
 import styles from "./style.module.css";
 
@@ -10,7 +10,7 @@ interface TodoAddProps {
   onAdd: (todo: Todo) => void;
 }
 
-export const TodoAdd = ({ onAdd }: TodoAddProps) => {
+export const TodoAdd: FC<TodoAddProps> = ({ onAdd }) => {
   const [todoText, setCurrentTodoText] = useState("");
 
   const onCreateTodo = () => {

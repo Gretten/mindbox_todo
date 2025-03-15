@@ -9,12 +9,6 @@
   margin: 10px 0;
 }
 
-.control-panel-filter {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .items-left {
   color: gray;
   font-size: 14px;

@@ -1,16 +1,13 @@
-import Button from "@mui/material/Button/Button";
-import { TodoAdd, TodoItem } from "../../../entities/todo";
+import { TodoAdd, TodoFilterPanel, TodoItem } from "../../../entities/todo";
 import { useTodoAppStore } from "../model/useTodoAppStore";
 import styles from "./style.module.css";
-import { MinorButton } from "../../../shared/ui/MinorButton";
-import ButtonGroup from "@mui/material/ButtonGroup/ButtonGroup";
+import { useTodoFilter } from "../model/useTodoFilter";
+import { FC } from "react";
 
-export const TodoApp = () => {
-  const { todos, addTodo, deleteTodo, updateTodo } = useTodoAppStore();
-
-  const hasTodos = todos.length > 0;
-  const activeTodosNumber =
-    todos.filter((todo) => !todo.isCompleted).length || 0;
+export const TodoApp: FC = () => {
+  const { todos, addTodo, deleteTodo, updateTodo, clearCompleted } =
+    useTodoAppStore();
+  const { filteredTodos, setFilter, filter } = useTodoFilter(todos);
 
   return (
     <div className={styles["app-container"]}>
@@ -19,8 +16,8 @@ export const TodoApp = () => {
         <TodoAdd onAdd={addTodo} />
       </div>
       <div className="todo-list">
-        {hasTodos &&
-          todos.map((todo) => (
+        {filteredTodos &&
+          filteredTodos.map((todo) => (
             <TodoItem
               key={todo.id}
               todo={todo}
@@ -28,26 +25,13 @@ export const TodoApp = () => {
               onUpdate={updateTodo}
             />
           ))}
-
-        {!hasTodos && <p>Всё сделано! ☑</p>}
       </div>
       <div className={styles["control-panel"]}>
-        <div className={styles["control-panel-filter"]}>
-          <ButtonGroup>
-            <MinorButton variant="text" size="small">
-              Все
-            </MinorButton>
-            <MinorButton variant="text" size="small">
-              Готовые
-            </MinorButton>
-            <MinorButton variant="text" size="small">
-              Активные
-            </MinorButton>
-          </ButtonGroup>
-        </div>
-        <MinorButton variant="text" size="small">
-          Очистить
-        </MinorButton>
+        <TodoFilterPanel
+          filter={filter}
+          setFilter={setFilter}
+          clearCompleted={clearCompleted}
+        />
       </div>
     </div>
   );

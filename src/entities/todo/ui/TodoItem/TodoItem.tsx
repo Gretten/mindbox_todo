@@ -3,13 +3,15 @@ import { Todo } from "../../model/model";
 import styles from "./style.module.css";
 import IconButton from "@mui/material/IconButton/IconButton";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import { FC } from "react";
+
 interface TodoItemProps {
   todo: Todo;
   onDelete: (id: string) => void;
   onUpdate: (todo: Todo) => void;
 }
 
-export const TodoItem = ({ todo, onDelete, onUpdate }: TodoItemProps) => {
+export const TodoItem: FC<TodoItemProps> = ({ todo, onDelete, onUpdate }) => {
   if (!todo) return null;
 
   const { id, title, isCompleted } = todo;

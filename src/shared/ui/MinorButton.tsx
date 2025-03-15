@@ -1,7 +1,17 @@
 import { styled } from "@mui/material/styles";
-import Button, { ButtonProps } from "@mui/material/Button/Button";
+import Button from "@mui/material/Button/Button";
 
-export const MinorButton = styled(Button)<ButtonProps>({
-  fontSize: 12,
+interface MinorButtonProps {
+  active?: boolean;
+}
+
+/**
+ * Кнопка с минимальным стилем
+ * Используется в панели фильтров
+ * Принимает параметр active, который определяет, активна ли кнопка
+ */
+export const MinorButton = styled(Button)<MinorButtonProps>(({ active }) => ({
+  fontSize: "12px",
   color: "gray",
-});
+  backgroundColor: active ? "#ebebeb;" : "transparent",
+}));

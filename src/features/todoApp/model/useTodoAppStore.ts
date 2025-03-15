@@ -23,5 +23,9 @@ export const useTodoAppStore = () => {
     setTodos((prev) => prev.map((t: Todo) => (t.id === todo.id ? todo : t)));
   };
 
-  return { todos, addTodo, deleteTodo, updateTodo };
+  const clearCompleted = () => {
+    setTodos((prev) => prev.filter((todo) => !todo.isCompleted));
+  };
+
+  return { todos, addTodo, deleteTodo, updateTodo, clearCompleted };
 };
