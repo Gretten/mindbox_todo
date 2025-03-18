@@ -3,11 +3,14 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://gretten.github.io/mindbox_todo",
   "scripts": {
     "start": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "vercel-build": "npm install && vite build"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
