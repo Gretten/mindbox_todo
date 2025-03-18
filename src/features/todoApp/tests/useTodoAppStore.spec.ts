@@ -9,6 +9,7 @@ jest.mock("../../../shared/api/api", () => ({
   },
 }));
 
+// Покрытие тестами ключевой бизнес-логики
 describe("useTodoAppStore", () => {
   const sampleTodos = [
     { id: "1", title: "Todo 1", isCompleted: false },
