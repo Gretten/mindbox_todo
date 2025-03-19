@@ -7,6 +7,12 @@ export type TodosAdapter = {
 
 export const todosAdapter: TodosAdapter = {
   getTodos: async () => {
-    return todoData;
+    try {
+      const data = localStorage.getItem("todos");
+      return data ? JSON.parse(data) : todoData;
+    } catch (error) {
+      console.error("Failed to get todos", error);
+      return [];
+    }
   },
 };
