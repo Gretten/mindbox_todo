@@ -4,6 +4,7 @@ import styles from "./style.module.css";
 import IconButton from "@mui/material/IconButton/IconButton";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import { FC } from "react";
+import { DraggableWrapper } from "../../../../shared/drag-n-drop/DargNDrop";
 
 interface TodoItemProps {
   todo: Todo;
@@ -24,23 +25,23 @@ export const TodoItem: FC<TodoItemProps> = ({ todo, onDelete, onUpdate }) => {
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
   return (
-    <div className={styles["todo-item"]}>
-      <div className={styles["left-panel"]}>
-        <Checkbox
-          {...label}
-          checked={isCompleted}
-          onChange={() => onUpdate({ ...todo, isCompleted: !isCompleted })}
-          sx={{ "& .MuiSvgIcon-root": { fontSize: 28 } }}
-        />
-        <h3 style={titleStyle}>{title}</h3>
+      <div className={styles["todo-item"]}>
+        <div className={styles["left-panel"]}>
+          <Checkbox
+            {...label}
+            checked={isCompleted}
+            onChange={() => onUpdate({ ...todo, isCompleted: !isCompleted })}
+            sx={{ "& .MuiSvgIcon-root": { fontSize: 28 } }}
+          />
+          <h3 style={titleStyle}>{title}</h3>
+        </div>
+        <IconButton
+          color="warning"
+          aria-label="delete todo"
+          onClick={() => onDelete(id)}
+        >
+          <DeleteOutlineIcon />
+        </IconButton>
       </div>
-      <IconButton
-        color="warning"
-        aria-label="delete todo"
-        onClick={() => onDelete(id)}
-      >
-        <DeleteOutlineIcon />
-      </IconButton>
-    </div>
   );
 };

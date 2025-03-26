@@ -38,5 +38,5 @@ export const useTodoAppStore = () => {
     saveTodos(todos.filter((todo) => !todo.isCompleted));
   };
 
-  return { todos, addTodo, deleteTodo, updateTodo, clearCompleted };
+  return { todos, setTodos, addTodo, deleteTodo, updateTodo, clearCompleted };
 };
