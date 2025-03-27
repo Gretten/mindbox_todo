@@ -4,7 +4,6 @@ import styles from "./style.module.css";
 import IconButton from "@mui/material/IconButton/IconButton";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import { FC } from "react";
-import { DraggableWrapper } from "../../../../shared/drag-n-drop/DargNDrop";
 
 interface TodoItemProps {
   todo: Todo;

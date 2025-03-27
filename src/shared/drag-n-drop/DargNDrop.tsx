@@ -1,20 +1,7 @@
 import { DragDropContext, Draggable, Droppable } from '@hello-pangea/dnd';
-import type { DroppableProvided, DroppableStateSnapshot, OnDragEndResponder  } from '@hello-pangea/dnd';
-import { FC, PropsWithChildren, ReactNode } from 'react';
-
-type DndReorderProps<T> = {
-    list: T[];
-    startIndex: number;
-    endIndex: number;
-};
-
-type DNDBlockProps = {
-    droppableId: string;
-    children: (
-      provided: DroppableProvided,
-      snapshot: DroppableStateSnapshot
-    ) => ReactNode;
-  };
+import type { OnDragEndResponder  } from '@hello-pangea/dnd';
+import { FC } from 'react';
+import { DNDBlockProps, DraggableWrapperProps, DndOnDragEndFactory, DndReorderParams } from './types';
 
 export const DNDContext = DragDropContext;
 
@@ -24,7 +11,7 @@ export const DNDBlock: FC<DNDBlockProps> = ({ children, droppableId }) => (
     </Droppable>
 )
 
-export const DraggableWrapper = ({ draggableId, index, children }: { draggableId: string; index: number; children: React.ReactNode }) => {
+export const DraggableWrapper: FC<DraggableWrapperProps> = ({ draggableId, index, children }) => {
     return (
       <Draggable draggableId={draggableId} index={index}>
         {provided => (
@@ -40,7 +27,7 @@ export const DraggableWrapper = ({ draggableId, index, children }: { draggableId
     );
   }
 
-export const dndReorder = <T,>(props: DndReorderProps<T>): T[] => {
+export const dndReorder: DndReorderParams = (props) => {
     const { list, startIndex, endIndex } = props;
     const result = Array.from(list);
     const [removed] = result.splice(startIndex, 1);
@@ -50,7 +37,7 @@ export const dndReorder = <T,>(props: DndReorderProps<T>): T[] => {
 }; 
 
 // Обертка респондера для onDragEnd. 
-export const dndOnDragEnd = <T,>(state: T[], setState: (state: T[]) => void) => {
+export const dndOnDragEnd: DndOnDragEndFactory = (state, setState) => {
     const responder: OnDragEndResponder = (result) => {
         if (!result.destination) {
             return;
