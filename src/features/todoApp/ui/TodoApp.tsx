@@ -1,9 +1,9 @@
-import { TodoAdd, TodoFilterPanel, TodoItem } from "../../../entities/todo";
+import { TodoAdd, TodoFilterPanel, TodoItem } from "@entities/todo";
+import { DNDBlock, DNDContext, dndOnDragEnd, DraggableWrapper } from '@shared/drag-n-drop/DargNDrop'
 import { useTodoAppStore } from "../model/useTodoAppStore";
 import styles from "./style.module.css";
 import { useTodoFilter } from "../model/useTodoFilter";
 import { FC } from "react";
-import { DNDBlock, DNDContext, dndOnDragEnd, DraggableWrapper } from '../../../shared/drag-n-drop/DargNDrop'
 
 export const TodoApp: FC = () => {
   const { todos, setTodos, addTodo, deleteTodo, updateTodo, clearCompleted } =

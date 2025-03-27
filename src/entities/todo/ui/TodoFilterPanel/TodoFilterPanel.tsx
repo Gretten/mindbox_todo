@@ -1,5 +1,5 @@
 import ButtonGroup from "@mui/material/ButtonGroup/ButtonGroup";
-import { MinorButton } from "../../../../shared/ui/MinorButton";
+import { MinorButton } from "@shared/ui/MinorButton";
 import styles from "./style.module.css";
 import { FC } from "react";
 import { filterOptions } from "./constants";

@@ -1,5 +1,5 @@
 import Checkbox from "@mui/material/Checkbox/Checkbox";
-import { Todo } from "../../model/model";
+import { Todo } from "@entities/todo/model/model";
 import styles from "./style.module.css";
 import IconButton from "@mui/material/IconButton/IconButton";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";

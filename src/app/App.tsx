@@ -1,4 +1,4 @@
-import { TodoApp } from "../features";
+import { TodoApp } from "@features/todoApp";
 import styles from "./global.module.css";
 import { TodoLayout } from "./layout/TodoLayout";
 function App() {
